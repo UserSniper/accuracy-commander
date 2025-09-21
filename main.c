@@ -12,7 +12,7 @@ void draw_title(){
 }
 
 void run_every_test(){
-    unsigned char i,tmp;
+    unsigned char i,j=0,k=0,tmp;
             
     for(i=0;i<(sizeof(test_names)>>1);i++){
         waitvsync();
@@ -20,6 +20,7 @@ void run_every_test(){
         cbm_k_plot(6,11);
         printf("Running Test %3d/%3d",i,(sizeof(test_names)>>1));
         test_result[i] = run_test(i);
+        if(test_result[i]) {k++;}
     }
     putchar(0x93);
 
@@ -39,7 +40,11 @@ void run_every_test(){
         if(tmp < 0x80){
             switch(tmp){
                 case 0: putchar(0x05); break;
-                case 1: putchar(0x99); break;
+                case 1: {
+                    putchar(0x99); 
+                    j++;
+                    break;
+                }
                 default: {
                     putchar(0x96); 
                     break;
@@ -47,16 +52,24 @@ void run_every_test(){
             }
         } else {
             putchar(0x99);
+            j++;
         }
         putchar(0x01);
-        if(test_result[i] >= 0x80) printf("%2x",(test_result[i]-0x80));
-        else if(test_result[i] >= 2) printf("%2x",(test_result[i]-2));
-        else printf("<>");
+        if(test_result[i] >= 0x80) {
+            printf("%2x",(test_result[i]-0x80));
+        }
+        else if(test_result[i] >= 2) {
+            printf("%2x",(test_result[i]-2));
+        }
+        else if(test_result[i]==0) printf("\x01 \x01");
+        else printf("[]");
                 
         i++;
     }
     putchar(0x01);
     
+    cbm_k_plot(4,16);
+    printf("Tests Passed:  %3d/%3d",j,k);
 
     do {
         waitvsync();

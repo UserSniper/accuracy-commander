@@ -1,5 +1,5 @@
 CC = mos-cx16-clang
-CARGS = -Oz -flto -fnonreentrant -Wno-int-conversion 
+CARGS = -O3 -flto -fnonreentrant -Wno-int-conversion 
 
 
 

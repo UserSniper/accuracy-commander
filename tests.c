@@ -17,19 +17,19 @@ const char * test_names[] = {
     "65c02: All NOPs",
     "IO5-IO7 operate at 2mhz",
     "",
-    " ",
-    " ",
-    " ",
-    " ",
+    "",
+    "",
+    "",
+    "",
 
     "VERA >$1:f9c0 reads VRAM", // 10
     "VERA DCSEL behavior",
     "VERA FX",
-    " ",
-    " ",
-    " ",
-    " ",
-    " ",
+    "",
+    "",
+    "",
+    "",
+    "",
     //" ", // 18
 };
 
@@ -519,7 +519,7 @@ unsigned char run_test(unsigned char test){
                 :
                 :"x","y","p"
             );
-            if(tmp != 0x5a){err_code = TEST_FAIL+1; break;}
+            if(tmp != 0x5a){err_code = TEST_FAIL+2; break;}
 
 
             // Test 3: The address bus wraps on a page boundary when 
