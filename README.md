@@ -65,7 +65,7 @@ b. The 3 byte, 8 cycle NOP ($5c) has an incorrect number of operands.
 
 
 
-### VERA <$1:f9c0 reads VRAM
+### VERA >$1:f9c0 reads VRAM
 1: Reading the PSG does not read VRAM. \
 2: Reading Color RAM does not read VRAM. \
 3: Reading Sprite RAM does not read VRAM.
